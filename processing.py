@@ -6,7 +6,6 @@ tiled_client_chx = tiled_client["raw"]
 tiled_cilent_sandbox = tiled_client["sandbox"]
 tiled_cilent_processed = tiled_client["processed"]
 
-@task
 def get_df_uncent(run):
     sid = run['start']['scan_id']
     raw_file_paths = extract_fpaths_from_sid(sid)
@@ -14,7 +13,6 @@ def get_df_uncent(run):
         if (os.path.exists(file)):
             yield raw_to_sorted_df(file)
 
-@flow
 def insert_to_tiled(container, run):
     structure = None
     node = None
@@ -48,9 +46,7 @@ def process_run(ref):
     logger.info(f"{full_uid = }")
     logger.info("Do something with this uid")
     
-    client = from_uri('https://tiled.nsls2.bnl.gov')
-    container = client['chx']['processed']
-    insert_to_tiled(container, run)
+    insert_to_tiled(tiled_client_processed, run)
 
 
 @flow
