@@ -1,11 +1,10 @@
 from prefect import flow, task, get_run_logger
 from tiled.client import from_profile
-from tpx3awkward import extract_fpaths_from_sid, raw_to_sorted_df
 
 tiled_client = from_profile("nsls2")["chx"]
 tiled_client_chx = tiled_client["raw"]
-tiled_cilent_sandbox = tiled_client["sandbox"]
-tiled_cilent_processed = tiled_client["processed"]
+tiled_client_sandbox = tiled_client["sandbox"]
+tiled_client_processed = tiled_client["processed"]
 
 def get_df_uncent(run):
     sid = run['start']['scan_id']
