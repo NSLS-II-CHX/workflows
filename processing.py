@@ -8,7 +8,7 @@ tiled_client_sandbox = tiled_client["sandbox"]
 tiled_client_processed = tiled_client["processed"]
 
 def get_df_uncent(run):
-    sid = run['start']['scan_id']
+    sid = run.start['scan_id']
     raw_file_paths = extract_fpaths_from_sid(sid)
     for file in raw_file_paths:
         if (os.path.exists(file)):
@@ -23,7 +23,7 @@ def insert_to_tiled(container, run):
         if (structure == None):
             structure = TableStructure.from_pandas(df)
             structure.npartitions = num_img
-            node = container.new("table", structure=structure, metadata={"raw": run['start']['uid']})
+            node = container.new("table", structure=structure, metadata={"raw": run.start['uid']})
         
         node.write_partition(df, partition_num)
 
