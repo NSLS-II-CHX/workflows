@@ -1,6 +1,6 @@
 from prefect import flow, task, get_run_logger
 from tiled.client import from_profile
-from tpx3awkward import extract_fpaths_from_sid, raw_to_sorted_df
+from tpx3utils import raw_to_sorted_df
 
 tiled_client = from_profile("nsls2")["chx"]
 tiled_client_chx = tiled_client["raw"]
@@ -9,7 +9,7 @@ tiled_client_processed = tiled_client["processed"]
 
 def get_df_uncent(run):
     sid = run.start['scan_id']
-    raw_file_paths = extract_fpaths_from_sid(sid)
+    raw_file_paths = list(run.table()["tpx3_files_raw_filepaths"].to_numpy()[0])
     for file in raw_file_paths:
         if (os.path.exists(file)):
             yield raw_to_sorted_df(file)
