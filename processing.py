@@ -9,7 +9,7 @@ tiled_client_processed = tiled_client["processed"]
 
 def get_df_uncent(run):
     sid = run.start['scan_id']
-    raw_file_paths = list(run.table()["tpx3_files_raw_filepaths"].to_numpy()[0])
+    raw_file_paths = list(run['primary']['data']['tpx3_files_raw_filepaths'].compute()[0])
     for file in raw_file_paths:
         if (os.path.exists(file)):
             yield raw_to_sorted_df(file)
@@ -47,7 +47,7 @@ def process_run(ref):
     logger.info(f"{full_uid = }")
     logger.info("Do something with this uid")
     
-    insert_to_tiled(tiled_client_processed, run)
+    insert_to_tiled(tiled_client_sandbox, run)
 
 
 @flow
