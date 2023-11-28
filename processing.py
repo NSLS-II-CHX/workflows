@@ -1,6 +1,7 @@
 from prefect import flow, task, get_run_logger
 from tiled.client import from_profile
 from tpx3utils import raw_to_sorted_df
+import os
 
 tiled_client = from_profile("nsls2")["chx"]
 tiled_client_chx = tiled_client["raw"]
