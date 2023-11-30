@@ -8,7 +8,7 @@ tiled_client_sandbox = tiled_client["sandbox"]
 tiled_client_processed = tiled_client["processed"]
 
 def get_df_uncent(run):
-    sid = run['start']['scan_id']
+    sid = run.start['scan_id']
     raw_file_paths = extract_fpaths_from_sid(sid)
     for file in raw_file_paths:
         if (os.path.exists(file)):
@@ -17,7 +17,6 @@ def get_df_uncent(run):
 def insert_to_tiled(container, run):
     structure = None
     node = None
-    # num_img = run.metadata['descriptors'][0]['configuration']['tpx3']['data']['tpx3_cam_num_images']
     num_img = run['primary'].metadata['descriptors'][0]['configuration']['tpx3']['data']['tpx3_cam_num_images']
 
     for partition_num, df in enumerate(get_df_uncent(run)):
