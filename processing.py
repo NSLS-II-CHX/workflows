@@ -62,6 +62,6 @@ def processing_flow(ref):
     """
     run = tiled_client_chx[ref]
     
-    process_run(ref)
-    # if (run['start']['detectors'][0] == 'tpx3'):
-    #     process_run(ref)
+    # process_run(ref)
+    if (run.start['detectors'][0] == 'tpx3'):
+        process_run(ref)
