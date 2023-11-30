@@ -10,7 +10,7 @@ import concurrent.futures
 import multiprocessing
 import time
 from tqdm import tqdm
-#from pyCHX.chx_packages import db, get_sid_filenames
+# from pyCHX.chx_packages import db, get_sid_filenames
 import gc
 
 IA = NDArray[np.uint64]
