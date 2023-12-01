@@ -608,7 +608,7 @@ CENT_H5_SUFFIX = "_cent"
 CONCAT_H5_SUFFIX = "_cent"
 
 
-def extract_fpaths_from_sid(run)
+def extract_fpaths_from_sid(run):
     """
     Extract file paths from a given sid.
     
