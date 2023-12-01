@@ -38,7 +38,9 @@ def process_run(ref):
     ref : int, str
         reference to BlueSky. It can be scan_id, uid or index
     """
-
+    
+    print("REFERENCE: ")
+    print(ref)
     logger = get_run_logger()
     # Grab the BlueSky run
     run = tiled_client_chx[ref]

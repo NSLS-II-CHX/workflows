@@ -622,7 +622,7 @@ def extract_fpaths_from_sid(run):
     List[str]
         Filepaths of the written .tpx3, as recorded in Tiled    
     """
-    return list(run.table()["tpx3_files_raw_filepaths"].to_numpy()[0])
+    return list(run["tpx3_files_raw_filepaths"].to_numpy()[0])
 
 
 def extract_uid_from_fpaths(
