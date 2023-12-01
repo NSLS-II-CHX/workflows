@@ -9,8 +9,8 @@ tiled_client_sandbox = tiled_client["sandbox"]
 tiled_client_processed = tiled_client["processed"]
 
 def get_df_uncent(run):
-    sid = run.start['scan_id']
-    raw_file_paths = extract_fpaths_from_sid(sid)
+    # sid = run.start['scan_id']
+    raw_file_paths = extract_fpaths_from_sid(run)
     for file in raw_file_paths:
         if (os.path.exists(file)):
             yield raw_to_sorted_df(file)

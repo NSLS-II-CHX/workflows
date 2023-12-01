@@ -608,9 +608,7 @@ CENT_H5_SUFFIX = "_cent"
 CONCAT_H5_SUFFIX = "_cent"
 
 
-def extract_fpaths_from_sid(
-    sid: int
-) -> List[str]:
+def extract_fpaths_from_sid(run)
     """
     Extract file paths from a given sid.
     
@@ -624,7 +622,7 @@ def extract_fpaths_from_sid(
     List[str]
         Filepaths of the written .tpx3, as recorded in Tiled    
     """
-    return list(db[sid].table()["tpx3_files_raw_filepaths"].to_numpy()[0])
+    return list(run.table()["tpx3_files_raw_filepaths"].to_numpy()[0])
 
 
 def extract_uid_from_fpaths(
