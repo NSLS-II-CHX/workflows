@@ -20,7 +20,7 @@ def insert_to_tiled(container, run):
     node = None
     num_img = run['primary'].metadata['descriptors'][0]['configuration']['tpx3']['data']['tpx3_cam_num_images']
     
-    node = container.create(key=run.start['uid'], metadata={"raw_uid": run.start['uid'], "raw_sid": run.start['scan_id']})
+    node = container.create_container(key=run.start['uid'], metadata={"raw_uid": run.start['uid'], "raw_sid": run.start['scan_id']})
     raw_node = None
     cent_node = None
 
