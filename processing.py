@@ -9,7 +9,7 @@ tiled_client_chx = tiled_client["raw"]
 tiled_client_processed = tiled_client["processed"]
 
 def get_df_uncent(run):
-    raw_file_paths = run['primary']['data']['tpx3_files_raw_filepaths'].compute()[0]
+    raw_file_paths = run['primary']['data']['tpx3_files_raw_filepaths'][0]
     for file in raw_file_paths:
         if (os.path.exists(file)):
             yield raw_to_sorted_df(file)
