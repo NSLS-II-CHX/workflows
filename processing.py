@@ -17,7 +17,7 @@ def get_df_uncent(run):
 def insert_to_tiled(container, run):
     structure = None
     node = None
-    num_img = run['primary'].metadata['descrsiptors'][0]['configuration']['tpx3']['data']['tpx3_cam_num_images']
+    num_img = run['primary'].metadata['descriptors'][0]['configuration']['tpx3']['data']['tpx3_cam_num_images']
 
     for partition_num, df in enumerate(get_df_uncent(run)):
         if (structure == None):
