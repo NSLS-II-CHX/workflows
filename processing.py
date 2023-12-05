@@ -3,6 +3,7 @@ from tiled.client import from_profile
 from tiled.structures.table import TableStructure
 from tpx3utils import extract_fpaths_from_sid, raw_to_sorted_df
 import os
+import multiprocessing
 
 node = None
 
@@ -39,6 +40,13 @@ def insert_to_tiled(container, run):
     args = []
     for i in range(0, len(raw_file_paths)):
         args.append([raw_file_paths[i], i])
+        
+    if num_workers == False:
+        num_cores = multiprocessing.cpu_count()
+        max_workers = num_cores-1
+    else:
+        max_workers = num_workers
+    
         
     with multiprocessing.Pool(processes=max_workers) as pool:
         pool.map(process_file, args)
