@@ -4,6 +4,8 @@ from tiled.structures.table import TableStructure
 from tpx3utils import extract_fpaths_from_sid, raw_to_sorted_df
 import os
 
+node = None
+
 tiled_client = from_profile("nsls2")["chx"]
 tiled_client_chx = tiled_client["raw"]
 # tiled_client_sandbox = tiled_client["sandbox"]
@@ -32,7 +34,7 @@ def insert_to_tiled(container, run):
     struct_df = raw_to_sorted_df(raw_file_paths[0])
     structure = TableStructure.from_pandas(struct_df)
     structure.npartitions = num_img
-    global node = container.new("table", structure=structure, key=run.start['uid'], metadata={"raw_uid": run.start['uid'], "raw_sid": run.start['scan_id']})
+    node = container.new("table", structure=structure, key=run.start['uid'], metadata={"raw_uid": run.start['uid'], "raw_sid": run.start['scan_id']})
     
     args = []
     for i in range(0, len(raw_file_paths)):
