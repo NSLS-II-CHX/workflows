@@ -19,14 +19,26 @@ def insert_to_tiled(container, run):
     structure = None
     node = None
     num_img = run['primary'].metadata['descriptors'][0]['configuration']['tpx3']['data']['tpx3_cam_num_images']
+    
+    node = container.create(key=run.start['uid'], metadata={"raw_uid": run.start['uid'], "raw_sid": run.start['scan_id']})
+    raw_node = None
+    cent_node = None
 
     for partition_num, df in enumerate(get_df_uncent(run)):
         if (structure == None):
             structure = TableStructure.from_pandas(df)
             structure.npartitions = num_img
-            node = container.new("table", structure=structure, key=run.start['uid'], metadata={"raw_uid": run.start['uid'], "raw_sid": run.start['scan_id']})
+            # structure2 = TableStructure.from_pandas(df)
+            # structure2.npartitions = num_img
+            # structs = [structure1, structure2]
+            cent_node = node.new("table", structure=structure, key="cent")
+            raw_node = node.new("table", structure=structure, key="raw")
+            # node = container.new("table", structure=structure, key=run.start['uid'], metadata={"raw_uid": run.start['uid'], "raw_sid": run.start['scan_id']})
         
-        node.write_partition(df, partition_num)
+        raw_node.write_partition(df, partition_num)
+        cent_node.write_partition(df, partition_num)
+        
+    
 
 @task
 def process_run(ref):
