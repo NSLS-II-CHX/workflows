@@ -5,7 +5,7 @@ from tpx3utils import extract_fpaths_from_sid
 
 tiled_client = from_profile("nsls2")["chx"]
 tiled_client_chx = tiled_client["raw"]
-tiled_client_sandbox = tiled_client["sandbox"]
+# tiled_client_sandbox = tiled_client["sandbox"]
 tiled_client_processed = tiled_client["processed"]
 
 def get_df_uncent(run):
