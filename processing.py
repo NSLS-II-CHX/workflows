@@ -2,6 +2,7 @@ from prefect import flow, task, get_run_logger
 from tiled.client import from_profile
 from tiled.structures.table import TableStructure
 from tpx3utils import extract_fpaths_from_sid
+import os
 
 tiled_client = from_profile("nsls2")["chx"]
 tiled_client_chx = tiled_client["raw"]
