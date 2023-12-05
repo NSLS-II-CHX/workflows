@@ -41,13 +41,9 @@ def insert_to_tiled(container, run):
     for i in range(0, len(raw_file_paths)):
         args.append([raw_file_paths[i], i])
         
-    if num_workers == False:
-        num_cores = multiprocessing.cpu_count()
-        max_workers = num_cores-1
-    else:
-        max_workers = num_workers
+    num_cores = multiprocessing.cpu_count()
+    max_workers = num_cores-1
     
-        
     with multiprocessing.Pool(processes=max_workers) as pool:
         pool.map(process_file, args)
         
