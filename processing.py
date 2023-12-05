@@ -24,7 +24,7 @@ def insert_to_tiled(container, run):
         if (structure == None):
             structure = TableStructure.from_pandas(df)
             structure.npartitions = num_img
-            node = container.new("table", structure=structure, metadata={"raw": run.start['uid']})
+            node = container.new("table", structure=structure, key=run.start['uid'], metadata={"raw_uid": run.start['uid'], "raw_sid": run.start['scan_id']})
         
         node.write_partition(df, partition_num)
 
